@@ -1,0 +1,131 @@
+<mvc:View controllerName="salesproject.controller.sales2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns="sap.m">
+
+    <f:DynamicPage id="dynamicPage" headerExpanded="{/headerExpanded}">
+        <f:title>
+            <f:DynamicPageTitle id="_IDGenDynamicPageTitle" />
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader id="_IDGenDynamicPageHeader">
+                <f:content>
+                    <HBox id="_IDGenHBox11" justifyContent="SpaceBetween">
+                        <VBox id="_IDGenVBox2" visible="{/filterVisible}">
+                            <Text id="_IDGenText62" text="Sales Order no"></Text>
+                            <!-- Changed from SearchField to MultiInput -->
+                            <MultiInput id="vbelnInput" placeholder="" width="100%"  />
+                            <VBox id="_IDGenVBox7" height="1rem" /> <!-- Vertical spacing -->
+                            <Text id="_IDGeText62" text="Record Created On"></Text>
+                            <DatePicker id="dateInput" placeholder="Select Date" width="100%" change="onDateChange" />
+                        </VBox>
+                        <VBox id="_IDGeVBox5" visible="{/filterVisible}">
+                            <Text id="_IDGenTex64" text="Customer Number"></Text>
+                            <MultiInput id="Customer" placeholder=" " width="100%"  />
+                        </VBox>
+                        <VBox id="_IDGenVBox5" visible="{/filterVisible}">
+                            <Text id="_IDGenText64" text="Sales Organisation"></Text>
+                            <MultiInput id="salesOrgSearch" placeholder=" " width="100%" />
+                        </VBox>
+                        <VBox id="_IDGenVBox6">
+                            <Button id="_IenButton9" text="GO" type="Emphasized" press="onFetchPress" />
+                             <VBox id="_IDGenVBo7" height="1rem" />
+                            <Button id="searchHelpBtn" text="Show Filters" type="Emphasized"  press="onSearchHelpPress" />
+                        </VBox>
+                    </HBox>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <Page id="tablePage" title="ZRAR Data">
+                <content>
+                    <Table id="zvbapTable" items="{path : 'zrardataModel>/results'}" mode="MultiSelect">
+                        <columns>
+                            <Column id="_IDGenColumn">
+                                <Text id="_IDenText" text="Sales Order no" />
+                            </Column>
+                            <Column id="_IDGenCumn">
+                                <Text id="_IDeext" text="Sales Organisation" />
+                            </Column>
+                            <Column id="_IDGenColumn1">
+                                <Text id="_IDGenText2" text="Revenue Accounting Item Class" />
+                            </Column>
+                            <Column id="_IDGenColumn5">
+                                <Text id="_IDGenText22" text="Record Created On" />
+                            </Column>
+                            <Column id="_IDGenColumn2">
+                                <Text id="_IDGenText11" text="Distribution Channel" />
+                            </Column>
+                            <Column id="_IDGenColumn3">
+                                <Text id="_IDGenText12" text="Sales Document Type" />
+                            </Column>
+                            <Column id="_IDGenColumn7">
+                                <Text id="_IDGenText24" text="Src Document Type" />
+                            </Column>
+                            <Column id="_IDGenCumn8">
+                                <Text id="_IDGnTxt25" text="Old Reference" />
+                            </Column>
+                            <Column id="_IDGenColumn8">
+                                <Text id="_IDGenText25" text="New Reference" />
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem id="_IDGenColumnListItem2">
+                                <cells>
+                                    <Text id="_IDGenText27" text="{zrardataModel>Vbeln}" />
+                                    <Text id="_IDGenText07" text="{zrardataModel>Vkorg}" />
+                                    <Text id="_IDGenText28" text="{zrardataModel>Raic}" />
+                                    <Text id="_IDGen28" text="{zrardataModel>Erdat}" />
+                                    <Text id="_IDGenText29" text="{zrardataModel>Vtweg}" />
+                                    <Text id="_IDGenText30" text="{zrardataModel>Auart}" />
+                                    <Text id="_IDGenText34" text="{zrardataModel>SrcdocType}" />
+                                    <Text id="_IDGenTet30" text="{zrardataModel>ReferenceId}" />
+                                    <Text id="_IDGenText35" text="{zrardataModel>Kunnr}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+
+                <footer>
+                    <Toolbar id="_IDGenToolbar1">
+                        <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                        <Button id="btnSubmit" text="Submit" type="Emphasized" press="onnext"></Button>
+                        <Button id="btnSelect" text="Select" press="onSelect"></Button>
+                    </Toolbar>
+                </footer>
+            </Page>
+        </f:content>
+    </f:DynamicPage>
+
+    <!-- Search Help Dialog -->
+    <Dialog id="searchHelpDialog" title="Search Help for VBELN and ERDAT" stretch="true" afterClose="onDialogClose">
+        <VBox id="_IDGenVBox8" class="sapUiSmallMargin">
+            <Text id="_IDGenText26" text="Sales Order No :" />
+           <HBox id="_IDGenHBox2">
+    <VBox id="_IDGenVBox9" width="45%"> <!-- Reduced width -->
+        <Text id="_IDGenText36" text="From:" />
+        <Input id="vbelnFromInput"  width="60%"/>
+    </VBox>
+    
+    <!-- Adding a Spacer VBox for height -->
+    <VBox id="_IDGenVBox3" height="2rem" /> <!-- Adjust height as needed -->
+
+    <VBox id="_IDGenVBox10" width="45%"> <!-- Reduced width -->
+        <Text id="_IDGenText39" text="To:" />
+        <Input id="vbelnToInput" width="60%"/>
+    </VBox>
+</HBox>
+
+
+            <HBox id="_IDGenHBox4" justifyContent="End" width="100%">
+                <Button id="_IDGenButtonGo" text="GO" type="Emphasized" press="onSearchHelpGoPress" />
+                <Button id="closeDialogBtn" text="Close" type="Transparent" press="onDialogClose" /> <!-- Close Button -->
+            </HBox>
+        </VBox>
+    </Dialog>
+
+</mvc:View>

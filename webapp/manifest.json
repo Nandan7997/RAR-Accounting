@@ -1,0 +1,217 @@
+{
+    "_version": "1.53.0",
+    "sap.app": {
+        "id": "salesproject",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "RAR Accounting",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.15.0",
+            "toolsId": "80f104ac-a5e8-4477-946c-89af0c34023c"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZVBAP_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation0"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "annotation0": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation0.xml",
+                "settings": {
+                    "localUri": "annotations/annotation0.xml"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "sales-manage": {
+                    "semanticObject": "sales",
+                    "action": "manage",
+                    "title": "{{flpTitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.114.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "salesproject.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "useBatch": true
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "salesproject.view",
+                "controlAggregation": "pages",
+                "controlId": "splitApp",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteView1",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetView1"
+                    ]
+                },
+                {
+                    "name": "home",
+                    "pattern": "home",
+                    "target": "home"
+                },
+                {
+                    "name": "SALES",
+                    "pattern": "SALES",
+                    "target": "SALES"
+                },
+                {
+                    "name": "sales2",
+                    "pattern": "sales2",
+                    "target": "sales2"
+                },
+                {
+                    "name": "table",
+                    "pattern": "table",
+                    "target": "table"
+                },
+                {
+                    "name": "rarfirstpage",
+                    "pattern": "rarfirstpage",
+                    "target": "rarfirstpage"
+                },
+                {
+                    "name": "smarttable",
+                    "pattern": "smarttable",
+                    "target": "smarttable"
+                }
+            ],
+            "targets": {
+                "TargetView1": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "View1",
+                    "viewName": "View1"
+                },
+                "home": {
+                    "controlId": "splitApp",
+                    "controlAggregation": "detailPages",
+                    "transition": "slide",
+                    "viewId": "home",
+                    "viewName": "home"
+                },
+                "SALES": {
+                    "controlId": "splitApp",
+                    "controlAggregation": "detailPages",
+                    "transition": "slide",
+                    "viewId": "SALES",
+                    "viewName": "SALES"
+                },
+                "sales2": {
+                    "controlId": "splitApp",
+                    "controlAggregation": "detailPages",
+                    "transition": "sales2",
+                    "viewId": "sales2",
+                    "viewName": "sales2"
+                },
+                "table": {
+                    "controlId": "splitApp",
+                    "controlAggregation": "detailPages",
+                    "transition": "table",
+                    "viewId": "table",
+                    "viewName": "table"
+                },
+                "rarfirstpage": {
+                    "controlId": "splitApp",
+                    "controlAggregation": "detailPages",
+                    "transition": "rarfirstpage",
+                    "viewId": "rarfirstpage",
+                    "viewName": "rarfirstpage"
+                },
+                "smarttable": {
+                    "controlId": "splitApp",
+                    "controlAggregation": "detailPages",
+                    "transition": "smarttable",
+                    "viewId": "smarttable",
+                    "viewName": "smarttable"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "salesproject.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "salesproject"
+    }
+}

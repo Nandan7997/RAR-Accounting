@@ -1,0 +1,437 @@
+<mvc:View
+xmlns:layout="sap.ui.layout"
+    controllerName="salesproject.controller.smarttable"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:table="sap.ui.table"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:f="sap.f"
+	xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:smartMultiInput="sap.ui.comp.smartmultiinput"
+	xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:m="sap.m"
+    xmlns:sfb="sap.ui.comp.smartfilterbar"
+    xmlns:sv="sap.ui.comp.smartvariants"
+    height="100%">
+
+    <f:DynamicPage id="dynamicPage" headerExpanded="{/headerExpanded}">
+        
+        <f:header>
+
+    <!--smartFilterBar:SmartFilterBar 
+                id="smartFilterBar"
+                entitySet="zrardynamicSet"
+                persistencyKey="SmartFilter_Explored" 
+                basicSearchFieldName="Bukrs" 
+                enableBasicSearch="true">
+            </smartFilterBar:SmartFilterBar-->
+
+   <f:DynamicPageHeader id="_IDGenDynamicPageHeader2">
+                <f:content>
+                    <HBox id="_IDGenHBox111" justifyContent="SpaceBetween">
+                        <VBox id="_IDGenVBox21" visible="{/filterVisible}">
+
+                        
+                            <Text id="_IDGenText621" text="Sales Order no"></Text>
+                            <!-- Changed from SearchField to MultiInput -->
+                           <smartMultiInput:SmartMultiInput id="KaufnInput1" value="{Kaufn}"   entitySet="zrardynamicSet"  supportRanges="true"
+												 textLabel="Sales Order Number"/>
+
+                            <VBox id="_IDGenVBox71" height="1rem" /> <!-- Vertical spacing -->
+                            <Text id="_IDGeText621" text="Record Created On" ></Text>
+                   <MultiInput 
+                       id="recordCreatedOn"
+                       placeholder=" "
+                       showValueHelp="true"
+                       valueHelpRequest="HelpRequest">
+                   </MultiInput>
+
+                        </VBox>
+                        <VBox id="_IDGeVBox15" visible="{/filterVisible}">
+                    <Text id="_IDGenTex641" text="Customer Number" />
+                    <MultiInput id="Customer1" placeholder=" " width="100%" valueHelpRequest="onValueHelpRequestcustomer" />
+                </VBox>
+                       <VBox id="_IDGenVBox51" visible="{/filterVisible}">
+                    <Text id="_IDGenText641" text="Company Code" />
+                    <!--smartMultiInput:SmartMultiInput id="salesOrgSearch1" value="{Vkorg}"   entitySet="zrardynamicSet"  supportRanges="true"
+												 textLabel="Sales Order Number"/-->
+                 <MultiInput id="salesOrgSearch1" placeholder=" " width="100%" valueHelpRequest="onValueHelpRequest" />
+                </VBox>
+                        <VBox id="_IDGenVBox512" visible="{/filterVisible}">
+                    <Text id="_IDGenText6412" text="Sales Organisation" />
+                    <!--smartMultiInput:SmartMultiInput id="salesOrgSearch12" value="{Vkorg}"   entitySet="zrardynamicSet"  supportRanges="true"
+												 textLabel="Sales Order Number"/-->
+                 <Input id="salesOrgSearch12" placeholder=" " width="100%" change="onInputChange"/>
+                </VBox> 
+                        <VBox id="_IDGenVBox16">
+                            <Button id="_IenButton19" text="GO" type="Emphasized" press="onGoPress" />
+                            <!--Button id="_IenButton194" text="Select" type="Default" press="onSelectPress" />
+                            <Button id="_IenButton19456" text="Submit" type="Emphasized" press="onSubmitPress" /-->
+                             <VBox id="_IDGenVBo17" height="1rem" />       
+                        </VBox>
+                       
+                         
+                        
+                    </HBox>
+                </f:content>
+            </f:DynamicPageHeader>
+  
+    </f:header>
+    <f:content>
+            <Page id="tablePage" showHeader="false" >
+                
+  
+    <!-- Smart Table dynamically binds data based on the OData metadata -->
+    <smartTable:SmartTable
+        id="smartTable"
+        entitySet="zrardynamicSet"
+        tableType="Table"  
+        useVariantManagement="true"
+        useTablePersonalisation="true"
+        smartFilterId="smartFilterBar"
+        header="Product List"
+        showRowCount="true"
+        enableAutoBinding="true">
+        
+        <!-- Table control definition (UI5 table element) -->
+        <table:Table
+            id="tableId"
+            enableColumnReordering="true"
+            visibleRowCount="10"
+            selectionMode="MultiToggle">
+            
+            <!-- Define template row, column settings handled by OData metadata -->
+            <table:columns>
+                <table:Column id="productIDColumn" width="150px">
+                    <Label id="_IDGenLabel4" text="Sales Order No" />
+                    <table:template>
+                        <Text id="_IDGenText40" text="{Vbeln}" />
+                    </table:template>
+                </table:Column>
+                
+                <table:Column id="productNameColumn" width="250px">
+                    <Label id="_IDGenLabel5" text="Company Code" />
+                    <table:template>
+                        <Text id="_IDGenText41" text="{Vkorg}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column id="CustomerColumn34" width="100px">
+                    <Label id="_IDGenLabel12" text="Customer Number" />
+                    <table:template>
+                        <Text id="_IDGenText48" text="{Kunnr}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column id="RevenueColumn" width="150px">
+                    <Label id="_IDGenLabel6" text="Revenue Accounting Item Class" />
+                    <table:template>
+                        <Text id="_IDGenText42" text="{Raic}" />
+                    </table:template>
+                </table:Column>
+                
+                <table:Column id="DateColumn" width="100px">
+                    <Label id="_IDGenLabel7" text="Sales order Creation Date" />
+                    <table:template>
+                        <Text id="_IDGenText43" text="{Erdat}" />
+                    </table:template>
+                </table:Column>
+
+				 <table:Column id="DistributionColumn1" width="100px">
+                    <Label id="_IDGenLabel8" text="Distribution Channel" />
+                    <table:template>
+                        <Text id="_IDGenText44" text="{Vtweg}" />
+                    </table:template>
+                </table:Column>
+
+				 <table:Column id="DocumentColumn2" width="100px">
+                    <Label id="_IDGenLabel9" text="Sales Document Type" />
+                    <table:template>
+                        <Text id="_IDGenText45" text="{Auart}" />
+                    </table:template>
+                </table:Column>
+
+				 <table:Column id="ItemTypeColumn3" width="100px">
+                    <Label id="_IDGenLabel10" text="Source Document Item Type" />
+                    <table:template>
+                        <Text id="_IDGenText46" text="{SrcdocType}" />
+                    </table:template>
+                </table:Column>
+
+				<table:Column id="ReferenceColumn333" width="100px">
+                    <Label id="_IDGenLabel11" text="Old Reference Id" />
+                    <table:template>
+                        <Text id="_IDGenText47" text="{ReferenceId}" />
+                    </table:template>
+                </table:Column>
+
+                <table:Column id="ReferenceColumn3333" width="100px">
+                    <Label id="_IDGenLabel111" text="New Reference Id" />
+                    <table:template>
+                        <Text id="_IDGenText477" text="{Reference}" />
+                    </table:template>
+                </table:Column>
+
+            </table:columns>
+        </table:Table>
+    </smartTable:SmartTable>
+     <footer>
+                    <Toolbar id="_IDGenToolbar1">
+                        <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                        <Button id="btnSubmit" text="Review" type="Emphasized" press="onSubmitPress"></Button>
+                        <Button id="btnSelect" text="Add to List" press="onSelectPress"></Button>
+                    </Toolbar>
+                </footer>
+            </Page>
+        </f:content>
+    
+    </f:DynamicPage>
+
+  <Dialog 
+    id="dateDialog" 
+    title="Created on" 
+    afterClose="onDialogClose" 
+    contentWidth="80%" 
+    contentHeight="100%">
+    <content>
+        <IconTabBar id="iconTabBar11" expandable="false" class="sapUiResponsiveContentPadding">
+            <items>
+                <!-- Search and Select Tab -->
+                <IconTabFilter id="searchAndSelectTab11" text="Search and Select">
+                    <VBox id="_IDGenVBox11" width="100%" height="100%">           
+             <!-- Horizontal Layout with two calendars -->
+                        <l:HorizontalLayout id="_IDGenHorizontalLayout1" xmlns:l="sap.ui.layout"   >
+                            <!-- First Calendar -->
+                            <l:VerticalLayout id="_IDGenVerticalLayout">
+                                <u:Calendar 
+                                    id="calendar1"
+                                    select="handleCalendarSelect1"
+                                    xmlns:u="sap.ui.unified" />
+                                <!--Button id="_IDGenButton3"
+                                    press="handleSelectToday"
+                                    text="Select Today" />
+                                <l:HorizontalLayout id="_IDGenHorizontalLayout2">
+                                    <Label id="_IDGenLabel" text="Selected Date (yyyy-mm-dd):" class="labelMarginLeft" />
+                                    <Text id="selectedDate1" text="No Date Selected" class="labelMarginLeft"/>
+                                </l:HorizontalLayout-->
+                            </l:VerticalLayout>
+                            <!-- Second Calendar -->
+                        </l:HorizontalLayout>
+                    </VBox>
+                </IconTabFilter>
+              <IconTabFilter id="defineConditionTab11" text="Define Condition">
+    <VBox id="_IDGenVBox12" width="80%" height="80%">
+        <HBox id="_IDGenHBoxCondition" width="100%">
+            <layout:HorizontalLayout id="_IDGenHorizontalLayout3">
+                <Label id="recordCreatedOnLabel" text="Created On:" />
+                <VBox id="_IDGenVBox14" width="2rem" /> <!-- Spacer -->
+                <Select id="conditionOperator11" selectedKey="EQ" width="150px" change="onConditionOperatorChange">
+                    <items>
+                        <core:Item id="_IDGenItemEqual" key="EQ" text="equal To" />
+                        <core:Item id="_IDGenItemBetween" key="BT" text="between" />
+                    </items>
+                </Select>
+                <VBox id="_IDGenVBox15" width="1rem" /> <!-- Spacer -->
+                <!-- Input field for Equal To condition -->
+                <VBox id="equalToVBox" width="100%" visible="true">
+                    <!-- DatePicker for selecting a date -->
+                    <DatePicker id="equalToDatePicker" change="onDateChange" />
+                    <!-- Input field where the selected date will be displayed >
+                    <Input id="recordCreatedOnInput" placeholder="Select Date" width="200px" value="" /-->
+                </VBox>
+                <VBox id="_IDGenVBox17" width="2rem" /> <!-- Spacer -->
+                <!-- Input fields for Between condition -->
+                <HBox id="betweenVBox" alignItems="Center" width="100%" visible="false">
+                    <Label id="_IDGenLabel2"  />
+                    <VBox id="_IDGenVBox18" width="1rem" /> <!-- Spacer -->
+                    <DatePicker id="fromDatePicker" width="200px" />
+                    <VBox id="_IDGenVBox19" width="1rem" /> <!-- Spacer -->
+                    <Label id="_IDGenLabel3"  />
+                    <VBox id="_IDGenVBox20" width="1rem" /> <!-- Spacer -->
+                    <DatePicker id="toDatePicker" width="200px" />
+                </HBox>
+                <VBox id="_IDGenVBox22" width="2rem" /> <!-- Spacer -->
+                <Button id="_IDGenButton5" text="Add" press="onAddCondition1" />
+            </layout:HorizontalLayout>
+        </HBox>
+        <List id="selectedConditionsList11" mode="Delete" />
+    </VBox>
+</IconTabFilter>
+            </items>
+        </IconTabBar>
+         <VBox id="bottomInputVBox" width="100%" class="sapUiSmallMarginTop">
+            <MultiInput 
+    id="newConditionInput" 
+    placeholder=""
+    showValueHelp="false" 
+    width="100%" />
+
+        </VBox>
+
+    </content>
+    
+    <!-- Dialog Buttons -->
+    <beginButton>
+        <Button id="_IDGenButton" text="OK" press="onDialog" />
+    </beginButton>
+    <endButton>
+        <Button id="_IDGenButton2" text="Cancel" press="onDialogClose2" />
+    </endButton>
+</Dialog>
+
+<Dialog 
+    id="salesOrgDialog" 
+    title="Select Company Code" 
+    afterClose="onDialogClose"
+    contentWidth="80%"
+    contentHeight="80%">
+
+    <content>
+        <IconTabBar id="iconTabBar" expandable="false" class="sapUiResponsiveContentPadding" width="100%" height="100%">
+            <items>
+
+                <!-- Search and Select Tab -->
+                <IconTabFilter id="searchAndSelectTab" text="Search and Select">
+                    <VBox id="_IDGenVBox13" width="100%" height="100%">
+                        <!-- Smart Filter Bar with Search functionality -->
+                        <sfb:SmartFilterBar 
+                            id="smartFilterBarSalesOrg"
+                            entitySet="ZSALES_ORG001Set"
+                            persistencyKey="SmartFilter_Explored" 
+                            enableBasicSearch="true"   
+                            width="100%"
+                            search="onSearch"
+                            liveMode="true">
+                            <sfb:controlConfiguration>
+                                <sfb:ControlConfiguration id="_IDGenControlConfiguration" key="Bukrs" label="Company Code" visibleInAdvancedArea="true" />
+                                <sfb:ControlConfiguration id="_IDGenControlConfiguration1" key="Butxt" label="Company Name" visibleInAdvancedArea="true" />
+                                <sfb:ControlConfiguration id="_IDGenControlConfiguration2" key="Ort01" label="City" visibleInAdvancedArea="true" />
+                                <sfb:ControlConfiguration id="_IDGenControlConfiguration3" key="Land1" label="Country" visibleInAdvancedArea="true" />
+                            </sfb:controlConfiguration>
+                        </sfb:SmartFilterBar>
+
+                        <smartTable:SmartTable 
+                            id="salesOrgSmartTable"
+                            entitySet="ZSALES_ORG001Set"
+                             tableType="Table" 
+                            smartFilterId="smartFilterBarSalesOrg"
+                            useVariantManagement="true"
+                            showRowCount="true"
+                            enableAutoBinding="true"
+                            header="Sales Organization Data"
+                            useTablePersonalisation="true"
+                            demandPopin="false"
+                            showFullScreenButton="true"
+                            persistencyKey="SmartTablePersistencyKey"
+                            class="sapUiResponsiveContentPadding"
+                            width="100%" height="100%"
+                            editTogglable="true"
+                            initiallyVisibleFields="Bukrs,Butxt,Ort01,Land1">
+                            
+
+                        </smartTable:SmartTable>
+
+                    </VBox>
+                </IconTabFilter>
+
+                <!-- Define Condition Tab -->
+                <IconTabFilter id="defineConditionTab" text="Define Condition">
+                    <VBox id="_IDGenVBox23" width="100%" height="100%">
+                        <Label id="_IDGenLabel" text="Define Conditions" />
+
+                        <HBox id="_IDGenHBox5" width="100%">
+                            <!-- Operator Selection (Equal to or Between) -->
+                            <Select id="conditionOperator" selectedKey="EQ" width="150px" change="onOperatorChange">
+                                <core:Item id="_IDGenItem1" key="EQ" text="equal to" />
+                                <core:Item id="_IDGenItem2" key="BT" text="between" />
+                            </Select>
+
+                            <!-- Value Input for Equal or First value of Between -->
+                            <Input id="conditionValue" placeholder="Enter value" width="200px" />
+
+                            <!-- Second Value Input for Between -->
+                            <Input id="conditionValue2" placeholder="Enter second value" width="200px" visible="false" />
+
+                            <!-- Add Button -->
+                            <Button id="_IDGenButton3" text="Add" press="onAddCondition" />
+                        </HBox>
+
+                        <!-- List of Selected Conditions -->
+                        <List id="selectedConditionsList" mode="Delete" delete="onDeleteCondition" width="100%" height="calc(100% - 50px)">
+                            <!-- Dynamic Items will be added here -->
+                        </List>
+                    </VBox>
+                </IconTabFilter>
+          
+                
+            </items>
+        </IconTabBar>
+    </content>
+
+    <!-- Dialog Buttons -->
+    <beginButton>
+        <Button id="_IDGenButton4" text="OK" press="onDialogOkPress" />
+    </beginButton>
+    <endButton>
+        <Button id="_IDGenButton6" text="Cancel" press="onDialogClose" />
+    </endButton>
+
+</Dialog>
+<!-- Value Help Dialog with SmartTable for customer no -->
+    <Dialog id="CustomernoDialog" title="Select Customer Number" afterClose="onDialogClose"
+        contentWidth="80%" contentHeight="70%">
+    <content>
+        <IconTabBar id="iconTabBar1">
+            <items>
+                <IconTabFilter id="searchAndSelectTab1" text="Search and Select">
+                    <VBox id="_IDGenVBox24">
+                        <sfb:SmartFilterBar 
+                            id="smartFilterBar1"
+                            entitySet="zcustomerNumSet"
+                            persistencyKey="SmartFilter_Explored" 
+                            enableBasicSearch="true"   
+                            width="100%"
+                            search="onGoPress1">
+                            <sfb:controlConfiguration>
+                                <sfb:ControlConfiguration id="_IDGenControlConfiguration4" key="Kunnr" label="Customer" visibleInAdvancedArea="true" />
+                                <sfb:ControlConfiguration id="_IDGenControlConfiguration5" key="Land1" label="Country/Reg." visibleInAdvancedArea="true" />
+                                <sfb:ControlConfiguration id="_IDGenControlConfiguration6" key="Name1" label="Name 1" visibleInAdvancedArea="true" />
+                                <sfb:ControlConfiguration id="_IDGenControlConfiguration7" key="Sortl" label="Search term" visibleInAdvancedArea="true" />
+                            </sfb:controlConfiguration>
+                        </sfb:SmartFilterBar>
+                        <smartTable:SmartTable 
+                            id="salesOrgSmartTable1"
+                            entitySet="zcustomerNumSet"  
+                            tableType="Table" 
+                                
+                            smartFilterId="smartFilterBar1"       
+                            useVariantManagement="true"              
+                            showRowCount="true"          
+                            enableAutoBinding="true"
+                            header="Customer Data"
+                            useTablePersonalisation="true"  
+                            demandPopin="false"            
+                            showFullScreenButton="true"
+                            persistencyKey="SmartTablePersistencyKey"
+                            class="sapUiResponsiveContentPadding"
+                            editTogglable="true"
+                            
+                            initiallyVisibleFields="Sortl,Kunnr,Land1,Name1,Ort01">
+                        </smartTable:SmartTable>
+                    </VBox>
+                </IconTabFilter>
+                 
+                
+            </items>
+        </IconTabBar>
+    </content>
+    <beginButton>
+        <Button id="_IDGenButton11" text="OK" press="onDialogOkPress1"/>
+    </beginButton>
+    <endButton>
+        <Button id="_IDGenButton21" text="Cancel" press="onDialogClose1"/>
+    </endButton>
+</Dialog>
+</mvc:View>

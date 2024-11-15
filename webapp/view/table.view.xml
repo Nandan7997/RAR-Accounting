@@ -1,0 +1,109 @@
+<mvc:View
+    controllerName="salesproject.controller.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page id="_IDGenPage" title="Selected Data">
+        <content>
+            <Table id="selectedDataTable" items="{selectedDataModel>/}">
+                <columns>
+                    <Column id="_DGenColumn">
+                        <Text id="IDenText" text="Sales Order no " />
+                    </Column>
+                    <Column id="_DGenCumn">
+                        <Text id="IDeext" text="Company Code " />
+                    </Column>
+                    <Column id="_DGenColumn1">
+                        <Text id="IDGenText2" text="Revenue Accounting Item Class" />
+                    </Column>
+                    <Column id="IDGenColumn5">
+                        <Text id="IDGenText22" text="Record Created On" />
+                    </Column>
+                    <Column id="_IGenColumn2">
+                        <Text id="_DGenText11" text="Distribution Channel " />
+                    </Column>
+                    <Column id="_IDGnColumn3">
+                        <Text id="_IDenText12" text="Sales Doc Type " />
+                    </Column>
+                    
+                       <Column id="_IDGnColu5">
+                                <Text id="_IGext22" text="Src Document Type" />
+                            </Column>
+                             <Column id="_IDenCumn8">
+                                <Text id="_DGnTxt25" text="Old Reference" />
+                            </Column>
+                    <Column id="_IDGenCoumn8">
+                        <Text id="_IDGenTxt25" text="New Reference " />
+                    </Column>
+                    <Column id="_IDGenColumn343"><Text id="_IDGenText54569" text="Action"/></Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem3">
+                        <cells>
+                            <Text id="_IDGenText1" text="{selectedDataModel>Vbeln}" />
+                            <Text id="_IDGenText21" text="{selectedDataModel>Vkorg}" />
+                            <Text id="_IDGenText23" text="{selectedDataModel>Raic}" />
+                            <Text id="_IDGenText31" text="{selectedDataModel>Erdat}" />
+                            <Text id="_IDGenText32" text="{selectedDataModel>Vtweg}" />
+                            <Text id="_IDGenText33" text="{selectedDataModel>Auart}" />
+                            <Text id="_IDGenText37" text="{selectedDataModel>SrcdocType}" />
+                            <Text id="_IDGenTt37" text="{selectedDataModel>ReferenceId}" />
+                            <Text id="_IDGenText38" text="{selectedDataModel>Reference}" />
+                            <Text id="_IDGenText38838" text="{selectedDataModel>Action}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+
+        <!-- Dialog for showing old and new references -->
+        <Dialog id="referenceDialog" title="Reference Information" stretch="false" contentWidth="400px" class="sapUiContentPadding" contentHeight="300px">
+            <VBox id="_IDGenVBox">
+                <Table id="_IDGenTable" inset="false">
+                    <columns>
+                        <Column id="_IDGenColumn10">
+                            <Text id="_IDGenText57" text="" />
+                        </Column>
+                        <Column id="_IDGenColumn22">
+                            <Text id="_IDGenText58" text="" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem id="_IDGenColumnListItem4">
+                            <cells>
+                                <Text id="_IDGenText59" text="Sales Order Number       : " />
+                                <Text id="kaufnReference" />
+                            </cells>
+                        </ColumnListItem>
+                        <ColumnListItem id="_IDGenColumnListItem5">
+                            <cells>
+                                <Text id="_IDGenText60" text="Old Reference ID : " />
+                                <Text id="oldReference" />
+                            </cells>
+                        </ColumnListItem>
+                        <ColumnListItem id="_IDGenColumnListItem6">
+                            <cells>
+                                <Text id="_IDGenText61" text="New Reference ID : " class="boldText"/>
+                                <Text id="newReference" class="sapUiSmallMarginBottom"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+            <beginButton>
+                <Button id="_IDGenUpdateButton" text="Update" press="updateReference" />
+            </beginButton>
+            <endButton>
+                <Button id="_IDGenButton1" text="Close" press="onCloseDialog" />
+            </endButton>
+        </Dialog>
+
+        <footer>
+            <Toolbar id="_IDGenTolbar1">
+                <ToolbarSpacer id="_IDGenToolarSpacer1" />
+                <Button id="UPDATE" text="Update" type="Emphasized" press="onUpdate" />
+                <Button id="BACK" text="More Orders"  press="onBack" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

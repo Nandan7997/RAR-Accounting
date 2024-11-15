@@ -1,0 +1,10 @@
+<mvc:View
+    controllerName="salesproject.controller.home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:table="sap.ui.table">
+
+    <Page id="home1" title="HOME PAGE">
+      <Text id="_IDGenText" text="WELCOME TO HOME PAGE"></Text>
+      
+    </Page>
+</mvc:View>

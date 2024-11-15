@@ -1,0 +1,64 @@
+<mvc:View controllerName="salesproject.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <App id="app">
+        <!-- Only the login page is shown at first -->
+        <Page id="loginPage" title="Login">
+            <content>
+                <FlexBox id="_IDGenFlexBox1" justifyContent="Center" alignItems="Center">
+                    <VBox id="_IDGenVBox1" class="sapUiSmallMargin" alignItems="Center" width="100%" justifyContent="Center">
+                        <!--Image id="hj" src="https://pngteam.com/images/staff-only-symbol-png-300x300_e598fa52_transparent_202562.png.png" width="200px"/-->
+                        <HBox id="_IDGenHBox1">
+                            <Label id="_IDGenLabel1" text="User Name" width="100px" required="true"/>
+                            <Input id="usernameInput" placeholder="Username" width="200px" showClearIcon="true" valueState="Error" valueStateText="Name required"/>
+                        </HBox>
+                        <HBox id="_IGenHBox1">
+                            <Label id="_IDGenLal1" text="Password" width="100px" required="true"/>
+                            <Input id="passwordInput" type="Password" placeholder="Password" width="200px" showClearIcon="true" valueState="Error" valueStateText="Password required"/>
+                        </HBox>
+                        <HBox id="_IDGenHBox" justifyContent="Center" class="sapUiSmallMargin" >
+                         <Button id="_IDGenButton109" text="Login" type="Accept"  class="customMarginEnd" press="onLoginPress"/>
+                         <!--Button id="_IDGenButton5" text="Register" press="onRegisterPress" type="Attention"/-->
+                        </HBox>
+
+
+                       
+                    </VBox>
+                </FlexBox>
+            </content>
+        </Page>
+        
+        <SplitApp id="splitApp" visible="false">
+            <masterPages>
+                <Page id="menuPage" title="Menu">
+                <!--headerContent>
+                        <Button id="toggleMasterBtn" icon="sap-icon://menu2" press="onToggleMaster" />
+                    </headerContent-->
+                    <List
+                        id="menuList"
+                        items="{leftmenuModel>/navigation}"
+                        itemPress="onItemSelect">
+                        <items>
+                            <StandardListItem id="_IDGenStandardListItem1"
+                                title="{leftmenuModel>title}"
+                                type="Navigation" />
+                        </items>
+                    </List>
+
+                    <!--VBox justifyContent="Center" alignItems="Center" width="100%">
+                        <Button text="Logout" type="Reject" press="OnLogout" />
+                    </VBox-->
+                    
+                </Page>
+            </masterPages>
+            <detailPages>
+                <Page id="detailPage" title="Welcome">
+                    <content>
+                        <Text id="IDGenText1" text="Please select an option from the menu." />
+                    </content>
+                </Page>
+            </detailPages>
+        </SplitApp>
+    </App>
+</mvc:View>

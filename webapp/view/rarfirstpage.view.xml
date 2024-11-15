@@ -1,0 +1,109 @@
+<mvc:View controllerName="salesproject.controller.rarfirstpage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns="sap.m">
+
+    <f:DynamicPage id="dynamicPage1" headerExpanded="{/headerExpanded}">
+        <f:title>
+            <f:DynamicPageTitle id="_IDGenDynamicPageTitle1" />
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader id="_IDGenDynamicPageHeader2">
+                <f:content>
+                    <HBox id="_IDGenHBox111" justifyContent="SpaceBetween">
+                        <VBox id="_IDGenVBox21" visible="{/filterVisible}">
+                            <Text id="_IDGenText621" text="Sales Order no"></Text>
+                            <!-- Changed from SearchField to MultiInput -->
+                            <MultiInput id="KaufnInput1" placeholder="" width="100%"  />
+
+                            <VBox id="_IDGenVBox71" height="1rem" /> <!-- Vertical spacing -->
+                            <Text id="_IDGeText621" text="Record Created On"></Text>
+                            <DatePicker id="dateInput1" placeholder="Select Date" displayFormat="MMM dd, yyyy" valueFormat="yyyy-MM-dd" width="100%" change="onDateChange" />
+                        </VBox>
+                        <VBox id="_IDGeVBox15" visible="{/filterVisible}">
+                            <Text id="_IDGenTex641" text="Customer Number"></Text>
+                            <MultiInput id="Customer1" placeholder=" " width="100%"  />
+                        </VBox>
+                        <VBox id="_IDGenVBox51" visible="{/filterVisible}">
+                            <Text id="_IDGenText641" text="Sales Organisation"></Text>
+                            <MultiInput id="salesOrgSearch1" placeholder=" " width="100%" />
+                        </VBox>
+                        <VBox id="_IDGenVBox16">
+                            <Button id="_IenButton19" text="GO" type="Emphasized" press="onGoPress" />
+                             <VBox id="_IDGenVBo17" height="1rem" />
+                            
+                        </VBox>
+                    </HBox>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <Page id="tablePage" title="ZRAR Data">
+                <content>
+                    <Table id="zvbapTable" items="{path : 'zrardataModel>/results'}" mode="MultiSelect">
+                        <columns>
+                            <Column id="_IDGenColumn">
+                                <Text id="_IDenText" text="Sales Order no" />
+                            </Column>
+                            <Column id="_IDGenCumn">
+                                <Text id="_IDeext" text="Sales Organisation" />
+                            </Column>
+                            <Column id="_IDGenColumn1">
+                                <Text id="_IDGenText2" text="Revenue Accounting Item Class" />
+                            </Column>
+                            <Column id="_IDGenColumn5">
+                                <Text id="_IDGenText22" text="Record Created On" />
+                            </Column>
+                            <Column id="_IDGenColumn2">
+                                <Text id="_IDGenText11" text="Distribution Channel" />
+                            </Column>
+                            <Column id="_IDGenColumn3">
+                                <Text id="_IDGenText12" text="Sales Document Type" />
+                            </Column>
+                            <Column id="_IDGenColumn7">
+                                <Text id="_IDGenText24" text="Src Document Type" />
+                            </Column>
+                            <Column id="_IDGenCumn8">
+                                <Text id="_IDGnTxt25" text="Old Reference" />
+                            </Column>
+                            <Column id="_IDGenColumn8">
+                                <Text id="_IDGenText25" text="New Reference" />
+                            </Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem id="Salesrowtemplete">
+                                <cells>
+                                    <Text id="Vbeln" text="{Vbeln}" />
+                                    <Text id="Vkorg" text="{Vkorg}" />
+                                    <Text id="Raic" text="{Raic}" />
+                                    <Text id="Erdat" text="{Erdat}" />
+                                    <Text id="Vtweg" text="{Vtweg}" />
+                                    <Text id="Auart" text="{Auart}" />
+                                    <Text id="SrcdocType" text="{SrcdocType}" />
+                                    <Text id="ReferenceId" text="{ReferenceId}" />
+                                    <Text id="Kunnr" text="{Kunnr}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            <footer>
+                    <Toolbar id="_IDGenToolbar1">
+                        <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                        <Button id="btnSubmit" text="Submit" type="Emphasized" press="onnext"></Button>
+                        <Button id="btnSelect" text="Select" press="onSelect"></Button>
+                    </Toolbar>
+                </footer>
+                
+            </Page>
+        </f:content>
+
+       
+    </f:DynamicPage>
+
+ 
+    
+</mvc:View>
