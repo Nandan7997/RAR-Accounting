@@ -40,7 +40,7 @@ An SAP Fiori application.
 1. Active NodeJS LTS (Long Term Support) version and associated supported NPM version.  (See https://nodejs.org)
 
 
-#### Description:
+##### Description:
 Aim: To create a Fiori Application to Update reference ID based on customer number.
 
 Tales used :- VBAK, 12mi, ZRAR_REFRENCE, T001.
@@ -52,10 +52,10 @@ AT FRONT_END:
  3. I have created an option to switch the page to RAR Reference Update in the left menu.
  4. ![image](https://github.com/user-attachments/assets/2d91e04b-105d-4e34-9ce9-c2b8a2092e40)
  5. That RAR Reference Update page has filter bars to filter that smart table which fetches data from the VBAK Table.
- 6. Based on Search criteria Like customer number, Company code, and company organization.
- 7. After getting data to the table user can select a multi-select option to select items from the table.
+ 6. Based on search criteria, such as customer number, company code, and company organization,
+ 7. After getting data to the table, the user can select a multi-select option to select items from the table.
  8. On my screen I have used two buttons 1. add to list 2. review
- 9. after selecting items from the table when the user clicks on the add to the list button all selected fields are stored in a list.
+ 9. After selecting items from the table, when the user clicks on the add to the list button, all selected fields are stored in a list.
  10. after that when the user clicks on the review button it will navigate the user to the next screen which contains a list of items that are selected by the user.
  11. in that screen we have a table with respective fields and a field with new reference and old reference.
  12. On that 2nd screen we have two buttons 1. Update 2. Add more items.
@@ -64,6 +64,9 @@ AT FRONT_END:
  15. once all done.  when the user clicks on the update that filed old reference has to be updated with a new reference.
 
 AT BACKEND:-
+1. In BackEnd I have created a gateway service. To do crud operations.
+2. By implementing methods like getentity, create, and update methods in the gateway.
+3. And the goal is to push the changes from front end to back end.
 
 
 
